@@ -2,9 +2,7 @@
 
 Hello everyone\! 👋
 
-Let me introduce myself, I'm **Eki Zulfar Rachman**. On this occasion, I'd like to share the portfolio website project that I've developed. built with React and Supabase, featuring a public-facing site and an admin dashboard.
-
-**Live Demo:** [https://ekizr.com](https://ekizr.com)
+Let me introduce myself, I'm **Rzky Yovi Attala**. On this occasion, I'd like to share the portfolio website project that I've developed. Built with React and Supabase, featuring a public-facing site and an admin dashboard.
 
 ---
 
@@ -42,28 +40,23 @@ This project is built using modern web technologies:
 ### 1. Clone & Install
 
 ```bash
-git clone https://github.com/EkiZR/Portofolio_V5.git
-cd Portofolio_V5
+git clone [https://github.com/Kyyoa/portokeren.git](https://github.com/Kyyoa/portokeren.git)
+cd portokeren
 npm install
-```
+If you encounter peer dependency issues: npm install --legacy-peer-deps
 
-> If you encounter peer dependency issues: `npm install --legacy-peer-deps`
+2. Environment Variables
+Create a .env file in the root directory:  
 
-### 2. Environment Variables
-
-Create a `.env` file in the root directory:
-
-```env
+Code snippet
 VITE_SUPABASE_URL=your-supabase-project-url
 VITE_SUPABASE_ANON_KEY=your-supabase-anon-key
-```
+Find these in your Supabase project under Settings → API.  
 
-> Find these in your Supabase project under **Settings → API**.  
-> ⚠️ Never commit `.env` to version control — make sure it's in `.gitignore`.
+⚠️ Never commit .env to version control — make sure it's in .gitignore.  
 
-### 3. Supabase Client (`src/supabase.js`)
-
-```javascript
+3. Supabase Client (src/supabase.js)  
+JavaScript
 import { createClient } from '@supabase/supabase-js'
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
@@ -74,13 +67,10 @@ if (!supabaseUrl || !supabaseKey) {
 }
 
 export const supabase = createClient(supabaseUrl, supabaseKey)
-```
+4. Database Setup  
+Go to your Supabase project → SQL Editor → run the script below (run once):  
 
-### 4. Database Setup
-
-Go to your Supabase project → **SQL Editor** → run the script below (run once):
-
-```sql
+SQL
 -- ============================
 -- TABLES
 -- ============================
@@ -128,8 +118,6 @@ ALTER TABLE public.certificates ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.portfolio_comments ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.profiles ENABLE ROW LEVEL SECURITY;
 
--- Authenticated users may only read their own profile.
--- This is required by the login flow to check the user's role.
 CREATE POLICY "User can read own profile"
 ON public.profiles
 FOR SELECT
@@ -235,85 +223,49 @@ CREATE POLICY "public read profile images"
 ON storage.objects FOR SELECT
 TO public
 USING (bucket_id = 'profile-images');
+5. Enable Realtime (Comments)  
+Go to Table Editor → portfolio_comments → Enable Realtime.  
 
--- Optional: default pinned comment
-INSERT INTO public.portfolio_comments (
-  content,
-  user_name,
-  profile_image,
-  is_pinned,
-  created_at
-)
-SELECT
-  'developed by ekizr. This project is open-source and free to use.',
-  'ekizr',
-  'https://egwzigagwyrmwjsrebzx.supabase.co/storage/v1/object/public/profile-images/profile-images/1771939421615_xx2q8hgya6e.jpeg',
-  true,
-  now()
-WHERE NOT EXISTS (
-  SELECT 1
-  FROM public.portfolio_comments
-  WHERE is_pinned = true
-);
-```
+6. Create Admin Account  
+Step 1 — Go to Authentication → Users → Add User in Supabase Dashboard, then copy the generated User ID.  
 
-### 5. Enable Realtime (Comments)
+Step 2 — Run this in the SQL Editor (replace USER_UUID with the copied ID):  
 
-Go to **Table Editor → portfolio_comments → Enable Realtime**.
-
-### 6. Create Admin Account
-
-**Step 1** — Go to **Authentication → Users → Add User** in Supabase Dashboard, then copy the generated User ID.
-
-**Step 2** — Run this in the SQL Editor (replace `USER_UUID` with the copied ID):
-
-```sql
+SQL
 INSERT INTO public.profiles (id, username, role)
-VALUES ('USER_UUID', 'eki', 'admin');
-```
-
-### 7. Run Locally
-
-```bash
+VALUES ('USER_UUID', 'yovia', 'admin');
+7. Run Locally  
+Bash
 npm run dev
-```
+Open http://localhost:5173 in your browser.  
 
-Open `http://localhost:5173` in your browser.
+Pages & Features  
+Public (Visitor)  
+Home — Hero section, about, skills  
 
----
+Projects — List of published projects with detail modal  
 
-## Pages & Features
+Certificates — Certificate gallery  
 
-### Public (Visitor)
-- **Home** — Hero section, about, skills
-- **Projects** — List of published projects with detail modal
-- **Certificates** — Certificate gallery
-- **Comments** — View all comments, submit a new comment with name and optional profile photo
+Comments — View all comments, submit a new comment with name and optional profile photo  
 
-### Admin (Dashboard)
-- **Login Page** — Email & password authentication via Supabase Auth
-- **Dashboard** — Overview panel after login
-- **Projects** — Create, edit, delete projects; manage image, links, features, tech stack, publish status, and order
-- **Certificates** — Upload and delete certificate images
-- **Comments** — View all comments; pin/unpin for highlighting; delete inappropriate comments
+Admin (Dashboard)  
+Login Page — Email & password authentication via Supabase Auth  
 
----
+Dashboard — Overview panel after login  
 
-## Build for Production
+Projects — Create, edit, delete projects; manage image, links, features, tech stack, publish status, and order  
 
-```bash
+Certificates — Upload and delete certificate images  
+
+Comments — View all comments; pin/unpin for highlighting; delete inappropriate comments  
+
+Build for Production
+Bash
 npm run build
-```
+Credits & Contact
+Rzky Yovi Attala
 
-Upload the contents of the `dist/` folder to your hosting provider.
+GitHub: Kyyoa · LinkedIn: Rizky Yovi Attalla
 
----
-
-## Credits & Contact
-
-**Eki Zulfar Rachman**  
-Website: [eki.my.id](https://ekizr.com) · GitHub: [EkiZR](https://github.com/EkiZR)
-
-Thanks to [LottieFiles](https://lottiefiles.com/free-animation/coding-NWhbxMOVgP) and Claude.
-
-⭐ If this project helped you, consider giving it a star on GitHub!
+Thanks to EkiZR for the open-source base, LottieFiles, and Claude.
