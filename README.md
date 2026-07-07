@@ -2,7 +2,7 @@
 
 Hello everyone\! 👋
 
-Let me introduce myself, I'm **Rzky Yovi Attala**. On this occasion, I'd like to share the portfolio website project that I've developed. Built with React and Supabase, featuring a public-facing site and an admin dashboard.
+Let me introduce myself, I'm **Rizky Yovi Attalla**. On this occasion, I'd like to share the portfolio website project that I've developed. Built with React and Supabase, featuring a public-facing site and an admin dashboard.
 
 ---
 
