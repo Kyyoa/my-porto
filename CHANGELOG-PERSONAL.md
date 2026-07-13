@@ -1,15 +1,40 @@
 # CHANGELOG PERSONAL — Portofolio V5
 
+## 2026-07-13 — Update SEO Meta Tags & Domain Production
+
+### Perubahan
+- **Domain Production:** https://portokeren-v5.vercel.app (deployed & live)
+- **Fix Typo Nama:** "Rzky" → "Rizky" (dengan "i")
+- **Meta Tags:** Update semua Open Graph, Twitter Card, JSON-LD structured data
+- **Canonical URL:** Ganti dari ekizr.com ke portokeren-v5.vercel.app
+- **Robots.txt:** Update sitemap URL ke domain baru
+
+### File yang Diubah
+
+| # | File | Perubahan |
+|---|------|-----------|
+| 1 | `index.html` | Meta title, description, keywords, author, Open Graph tags, Twitter Card tags, canonical URL, JSON-LD (nama, jobTitle, url, image, sameAs) |
+| 2 | `public/robots.txt` | Sitemap URL → https://portokeren-v5.vercel.app/sitemap.xml |
+| 3 | `public/Meta.png` | File gambar diganti (branding "Ekizr" → "Kyyoa") |
+
+### Data yang Diperbaiki di index.html
+- Nama: **Eki Zulfar Rachman** → **Rizky Yovi Attalla**
+- Title: **Front-End Web Developer** → **Full-Stack Architect**
+- Domain: **ekizr.com** → **portokeren-v5.vercel.app**
+- Social Media: Hapus Instagram & TikTok, keep GitHub & LinkedIn saja
+
+---
+
 ## 2026-07-07 — Penggantian Data Personal
 
 ### Data Baru
-- **Nama Lengkap:** Rzky Yovi Attala
+- **Nama Lengkap:** Rizky Yovi Attalla
 - **Brand/Nama Singkat:** Kyyoa
 - **Title/Bio:** Full-Stack Architect, AI-Driven Execution.
 - **Email:** yoviattalla@gmail.com
 - **GitHub:** https://github.com/Kyyoa
 - **LinkedIn:** https://www.linkedin.com/in/rizky-yovi-attalla-49103a410/
-- **Domain:** (Tidak ada — semua referensi domain ekizr.com dihapus)
+- **Domain:** https://portokeren-v5.vercel.app (deployed to Vercel)
 - **Instagram:** (Dihapus)
 - **YouTube:** (Dihapus)
 - **TikTok:** (Dihapus)
